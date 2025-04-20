@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Fabric" pattern="file[CobblemonDimension_1.21.1.fabric.main]:*/||file[CobblemonDimension_1.21.1.fabric]:build.gradle||file[CobblemonDimension_1.21.1.fabric*]:*//*" />
+</component>

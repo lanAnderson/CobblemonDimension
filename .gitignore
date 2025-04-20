@@ -1,5 +1,9 @@
 # User-specific stuff
-.idea/
+.idea/*
+!/.idea/scopes
+!/.idea/codeStyles
+!/.idea/fileColors.xml
+
 
 *.iml
 *.ipr

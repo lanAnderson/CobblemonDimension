@@ -5,6 +5,11 @@ plugins {
     id 'com.modrinth.minotaur'
 }
 
+dependencies {
+    implementation "maven.modrinth:cobblemon:${project.cobblemon_version}-neoforge"
+    implementation "maven.modrinth:kotlin-for-forge:${project.kotlin_version}-neoforge"
+}
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists

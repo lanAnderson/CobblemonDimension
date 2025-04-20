@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Forge" pattern="file[CobblemonDimension_1.21.1.forge.main]:*/||file[CobblemonDimension_1.21.1.forge]:runs/*||file[CobblemonDimension_1.21.1.forge]:build.gradle||file[CobblemonDimension_1.21.1.forge]:*/" />
+</component>
