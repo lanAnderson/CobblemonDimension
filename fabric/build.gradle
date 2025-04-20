@@ -1,6 +1,8 @@
 plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
+    id 'net.darkhax.curseforgegradle'
+    id 'com.modrinth.minotaur'
 }
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
@@ -33,5 +35,54 @@ loom {
             ideConfigGenerated(true)
             runDir('runs/server')
         }
+    }
+}
+
+modrinth {
+    debugMode = true
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = modrinth_id
+    versionNumber = minecraft_version + "-" + version
+    versionName = base.archivesName.get() + "-" + version
+    versionType = "release"
+    uploadFile = jar
+
+    List<String> mcVersions = modrinth_gameVersions.split(",")
+    gameVersions = mcVersions
+    loaders = ["fabric"]
+
+    changelog = projectDir.toPath().getParent().resolve("LATEST_CHANGELOG.md").getText()
+
+    dependencies {
+        required.project "cobblemon"
+    }
+}
+
+tasks.register('publishCurseForge', net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    group = "curseforge"
+
+    debugMode = true
+    disableVersionDetection()
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+
+    def mainFile = upload(curseforge_id, jar)
+    mainFile.changelogType = "markdown"
+    mainFile.changelog = projectDir.toPath().getParent().resolve("LATEST_CHANGELOG.md").getText()
+    mainFile.releaseType = "release"
+
+    List<String> mcVersions = curseforge_gameVersions.split(",")
+    mainFile.gameVersions = mcVersions
+    mainFile.addGameVersion("Fabric")
+    mainFile.addJavaVersion("Java 21")
+
+    mainFile.addRequirement("cobblemon")
+
+}
+
+tasks.register('publishFabric') {
+    group = "upload"
+    afterEvaluate {
+        dependsOn(tasks.publishCurseForge)
+        dependsOn(tasks.modrinth)
     }
 }

@@ -1,6 +1,8 @@
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.moddev'
+    id 'net.darkhax.curseforgegradle'
+    id 'com.modrinth.minotaur'
 }
 
 neoForge {
@@ -37,3 +39,49 @@ neoForge {
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+modrinth {
+    debugMode = true
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = modrinth_id
+    versionNumber = minecraft_version + "-" + version
+    versionName = base.archivesName.get() + "-" + version
+    versionType = "release"
+    uploadFile = jar
+
+    List<String> mcVersions = modrinth_gameVersions.split(",")
+    gameVersions = mcVersions
+    loaders = ["neoforge"]
+
+    changelog = projectDir.toPath().getParent().resolve("LATEST_CHANGELOG.md").getText()
+
+    dependencies {
+        required.project "cobblemon"
+    }
+}
+
+tasks.register('publishCurseForge', net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    debugMode = true
+    disableVersionDetection()
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+
+    def mainFile = upload(curseforge_id, jar)
+    mainFile.changelogType = "markdown"
+    mainFile.changelog = projectDir.toPath().getParent().resolve("LATEST_CHANGELOG.md").getText()
+    mainFile.releaseType = "release"
+
+    List<String> mcVersions = curseforge_gameVersions.split(",")
+    mainFile.gameVersions = mcVersions
+    mainFile.addGameVersion("NeoForge")
+    mainFile.addJavaVersion("Java 21")
+
+    mainFile.addRequirement("cobblemon")
+}
+
+tasks.register('publishNeoForge') {
+    group = "upload"
+    afterEvaluate {
+        dependsOn(tasks.publishCurseForge)
+        dependsOn(tasks.modrinth)
+    }
+}

@@ -36,6 +36,23 @@ repositories {
                 })
         filter { includeGroup('org.parchmentmc.data') }
     }
+    exclusiveContent {
+        forRepository {
+            maven { url = "https://cursemaven.com" }
+        }
+        filter {
+            includeGroup "curse.maven"
+        }
+    }
+    exclusiveContent {
+        forRepository {
+            maven { url = "https://api.modrinth.com/maven" }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+
     maven {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com'
@@ -78,7 +95,7 @@ jar {
 }
 
 processResources {
-    var expandProps = ['version'                      : version,
+    var expandProps = [version                        : version,
                        'group'                        : project.group, //Else we target the task's group.
                        'minecraft_version'            : minecraft_version,
                        'minecraft_version_range'      : minecraft_version_range,
