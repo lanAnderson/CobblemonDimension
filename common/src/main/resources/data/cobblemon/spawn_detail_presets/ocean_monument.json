@@ -1,8 +1,11 @@
 {
   "condition": {
-	"structures": [
-	  "minecraft:monument"
+    "structures": [
+      "minecraft:monument"
     ],
-	"maxY": 62
+    "maxY": 62,
+    "dimensions": [
+      "cobblemondim:cobbleworld"
+    ]
   }
 }

@@ -1,5 +1,8 @@
 {
   "condition": {
-    "fluid": "#minecraft:lava"
+    "fluid": "#minecraft:lava",
+    "dimensions": [
+      "cobblemondim:cobbleworld"
+    ]
   }
 }

@@ -1,9 +1,14 @@
 {
+  "condition": {
+    "dimensions": [
+      "cobblemondim:cobbleworld"
+    ]
+  },
   "anticondition": {
-	"structures": [
-	  "#minecraft:village"
-	],
-	"neededNearbyBlocks": [
+    "structures": [
+      "#minecraft:village"
+    ],
+    "neededNearbyBlocks": [
       "#cobblemon:concrete_blocks"
     ]
   }

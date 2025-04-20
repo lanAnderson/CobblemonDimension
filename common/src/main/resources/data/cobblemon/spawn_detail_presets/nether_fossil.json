@@ -1,10 +1,13 @@
 {
   "condition": {
-	"structures": [
-	  "minecraft:nether_fossil"
+    "structures": [
+      "minecraft:nether_fossil"
     ],
-	"neededNearbyBlocks": [
+    "neededNearbyBlocks": [
       "minecraft:bone_block"
-	]
+    ],
+    "dimensions": [
+      "cobblemondim:cobbleworld"
+    ]
   }
 }

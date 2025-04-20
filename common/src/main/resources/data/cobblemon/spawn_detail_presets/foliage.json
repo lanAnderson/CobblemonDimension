@@ -1,8 +1,11 @@
 {
   "condition": {
     "neededNearbyBlocks": [
-	  "#minecraft:leaves",
+      "#minecraft:leaves",
       "#c:leaves"
+    ],
+    "dimensions": [
+      "cobblemondim:cobbleworld"
     ]
   }
 }

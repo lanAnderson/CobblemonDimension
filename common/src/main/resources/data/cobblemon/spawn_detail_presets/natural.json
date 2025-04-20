@@ -2,11 +2,14 @@
   "condition": {
     "neededBaseBlocks": [
       "#cobblemon:natural"
+    ],
+    "dimensions": [
+      "cobblemondim:cobbleworld"
     ]
   },
   "anticondition": {
-	  "neededBaseBlocks": [
-      	"minecraft:farmland"
-	  ]
+    "neededBaseBlocks": [
+      "minecraft:farmland"
+    ]
   }
 }

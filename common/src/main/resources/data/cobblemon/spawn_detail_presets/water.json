@@ -1,5 +1,8 @@
 {
   "condition": {
-    "fluid": "#minecraft:water"
+    "fluid": "#minecraft:water",
+    "dimensions": [
+      "cobblemondim:cobbleworld"
+    ]
   }
 }

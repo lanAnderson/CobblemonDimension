@@ -1,7 +1,10 @@
 {
   "condition": {
     "canSeeSky": false,
-	"maxLight": 0
+    "maxLight": 0,
+    "dimensions": [
+      "cobblemondim:cobbleworld"
+    ]
   },
   "anticondition": {
     "neededBaseBlocks": [
