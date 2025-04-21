@@ -1,0 +1,10 @@
+{
+  "displayName": "Limits spawn to Cobblemon Dimension",
+  "enabled": "false",
+  "components": [
+    {
+      "type": "location",
+      "allow": "v.world.is_of('cobblemondim:cobbleworld')"
+    }
+  ]
+}
